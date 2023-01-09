@@ -33,7 +33,7 @@ onplayerspawned()
 		old_angles = self getPlayerAngles();
 		wait 0.05;
 		
-		if(cooldown == 1){wait 1800; cooldown = 0; status = 1;}
+		if(cooldown == 1){wait 10; cooldown = 0; status = 1;}
 		
 		else if(status == 1){status = 0; self thread print_to_all( self.name + " is ^1AFK-Ready");}
 		
@@ -48,11 +48,11 @@ onplayerspawned()
 			wait 5;
 
 			
-    		while(distance(old_origin, self.origin) <= 5 || old_angles != self getPlayerAngles() && afk == 0 && afkc < 590000)
+    		while(distance(old_origin, self.origin) <= 5 || old_angles != self getPlayerAngles() && afk == 0 && afkc < 5900)
 			{
 				if(self adsbuttonpressed() || self ActionSlotFourButtonPressed() || self attackbuttonpressed() || self jumpbuttonpressed() || self meleeButtonPressed() || self throwbuttonpressed() ||  self actionslotonebuttonpressed() || self ActionSlotTwoButtonPressed() || self ActionSlotThreeButtonPressed() || self SprintButtonPressed() || self ChangeSeatButtonPressed() || self SecondaryOffhandButtonPressed() || self FragButtonPressed() || self UseButtonPressed()){afk = 1;}
 				old_angles = self getPlayerAngles();
-				afkc++;
+				afkc+=0.01;
     			wait 0.05;
     		}
 			
@@ -61,7 +61,7 @@ onplayerspawned()
 			self.ignoreme = 0; // Zombies will find the player again
 			self disableInvulnerability(); // God mode is off
 			afkc = 0;
-			// cooldown = 1;
+			cooldown = 1;
 		}
 	}
 }
