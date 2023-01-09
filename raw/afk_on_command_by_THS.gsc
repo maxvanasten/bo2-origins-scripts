@@ -43,7 +43,7 @@ onplayerspawned()
 			self enableInvulnerability(); // God mode is on
     		old_origin = self.origin;
     		old_angles = self getPlayerAngles();
-			self thread print_to_all( self.name + " is ^1AFK ^7for ^1max. 5 Minutes");
+			self thread print_to_all( self.name + " is ^1AFK");
 			afk = 0;
 			wait 5;
 
@@ -56,7 +56,7 @@ onplayerspawned()
     			wait 0.05;
     		}
 			
-			self thread print_to_all( self.name + " is no longer ^1AFK^7,^1 30^7 Minutes ^1cooldown");
+			self thread print_to_all( self.name + " is no longer ^1AFK");
     		self.sessionstate = "playing";
 			self.ignoreme = 0; // Zombies will find the player again
 			self disableInvulnerability(); // God mode is off
